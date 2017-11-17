@@ -1,0 +1,42 @@
+
+{{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}{{patient.name.[0].given}} {{patient.name.[0].family}}{{/text.headline}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+				{{#paper-list}}
+				  {{#paper-subheader}}Basic Information{{/paper-subheader}}
+				    {{#paper-item class="md-2-line"}}
+				      <div class="md-list-item-text">
+				      	<p>Organization Name:</p>
+				        <h3>{{patient.managingOrganization.display}}</h3>
+				      </div>
+				    {{/paper-item}}
+				    {{#paper-item class="md-2-line"}}
+				      <div class="md-list-item-text">
+				      	<p>Gender:</p>
+				        <h3>{{patient.gender}}</h3>
+				      </div>
+				    {{/paper-item}}
+				    {{#paper-item class="md-2-line"}}
+				      <div class="md-list-item-text">
+				      	<p>Number of Conditions:</p>
+				        <h3>{{patient.conditions.length}}</h3>
+				      </div>
+				    {{/paper-item}}
+
+				  {{paper-divider}}
+
+				  {{#paper-subheader}}Conditions{{/paper-subheader}}
+				  {{#each patient.conditions as |condition|}}
+				    {{#paper-item class="md-2-line"}}
+				      <div class="md-list-item-text">
+				        <h3>{{condition}}</h3>
+				      </div>
+				    {{/paper-item}}
+				  {{/each}}
+				{{/paper-list}}
+      {{/card.content}}
+    {{/paper-card}}
